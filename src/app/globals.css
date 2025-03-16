@@ -1,0 +1,652 @@
+@import "flowbite/src/themes/default";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--main-color: "#DAA520";
+}
+body {
+	font-family: "Inter", sans-serif;
+	font-style: normal;
+}
+a {
+	text-decoration: none;
+	text-wrap: nowrap;
+}
+ul {
+	list-style: none;
+}
+.btn-warning {
+	background-color: #daa520;
+}
+.custom-bg {
+	background-color: var(--main-color);
+}
+.overflow-hidden {
+	overflow: hidden;
+}
+/* start header  */
+.main-header {
+	padding: 20px;
+}
+.navbar .nav-links,
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+}
+.header .top-links {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 30px;
+	padding-right: 150px;
+}
+.header .top-links a {
+	color: black;
+}
+.header .small-lang {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+	.header .small-lang {
+		justify-content: end;
+	}
+}
+.header .small-lang .en {
+	width: 31px;
+}
+.header .language-box {
+	display: flex;
+	gap: 5px;
+}
+.header .language-box button {
+	background-color: transparent;
+	border: 0;
+}
+.header .nav-links-phone {
+	display: none;
+}
+
+.navbar {
+	width: 70%;
+	margin: auto;
+	padding-top: 40px;
+}
+.navbar .nav-links {
+	width: 100%;
+	gap: 5px;
+}
+.navbar .nav-links a {
+	color: black;
+	text-wrap: nowrap;
+}
+
+.header #close-nav {
+	display: none;
+}
+
+.menu-toggle {
+	display: none;
+}
+/* Hide top-links and show menu toggle for small screens */
+@media (max-width: 768px) {
+	.header {
+		padding: 15px;
+	}
+	.header .top-links {
+		display: none;
+	}
+
+	.menu-toggle {
+		display: block;
+		cursor: pointer;
+	}
+
+	/* Optional styling for the toggle image */
+	.menu-toggle img {
+		width: 30px;
+		height: 30px;
+	}
+
+	.main-header {
+		padding: 0;
+	}
+
+	.navbar {
+		display: none;
+	}
+	.navbar .nav-links a {
+		color: black;
+		font-size: 12px;
+	}
+	.header .top-links {
+		padding: 0;
+	}
+	.header .nav-links-phone {
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.header #close-nav {
+		display: block;
+	}
+}
+
+/* Show top-links when it is toggled open on small screens */
+.top-links.active {
+	display: flex !important;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 20px;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	right: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #fff;
+	z-index: 10;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	width: 100%;
+	height: 100vh;
+}
+
+/* Start Bannar Image  */
+.blogs-section,
+.event-section {
+	position: relative;
+	width: 100%;
+	height: 463px;
+}
+.event-section {
+	background: url("/imgs/event1.png") no-repeat center center/cover;
+}
+.categories {
+	background: url("/imgs/playful-games-birthday-party-nature-background\ 1.png")
+		no-repeat center center/cover;
+}
+.event-list {
+	background: url("/imgs/photorealistic-wedding-venue-with-intricate-decor-ornaments.png")
+		no-repeat center center/cover;
+}
+.event-details {
+	background: url("/imgs/photorealistic-wedding-venue-with-intricate-decor-ornaments\ \(1\).png")
+		no-repeat center center/cover;
+}
+
+.about-us {
+	position: relative;
+	width: 100%;
+	height: 463px;
+	background: url("/imgs/Offers\ banner\ 1.png")
+		no-repeat center center/cover;
+}
+.about-us h1 {
+	width: 68%;
+    text-align: left;
+}
+.about-us-desc p {
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #5a5a5a;
+}
+.blogs-section {
+	background: url("/imgs/blog\ banner.png")
+		no-repeat center center/cover;
+}
+.blogs-section {
+	background: url("/imgs/blog\ banner.png") no-repeat center center/cover;
+}
+.blogs-section-details {
+	height: 300px;
+}
+.offers {
+	position: relative;
+	width: 100%;
+	background: url("/imgs/Rectangle22.png")
+		no-repeat center center/cover;
+}
+.blogs-section .overlay,
+.event-section .overlay {
+	padding: 10px;
+	border-radius: 10px;
+	width: 68%;
+	text-align: left;
+}
+.blogs-section .overlay div,
+.event-section .overlay div {
+	width: 55%;
+}
+.blogs-section .overlay a
+.event-section .overlay a {
+	color: #fff;
+}
+.event-section .slider-btns {
+	width: 100px;
+	height: 5px;
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	user-select: none;
+}
+.event-section .slider-btns span {
+	width: 10px;
+	height: 10px;
+	background-color: #d9d9d9;
+	border-radius: 50%;
+	display: block;
+	cursor: pointer;
+}
+.event-section .slider-btns span.active {
+	background-color: #daa520;
+}
+@media (max-width: 768px) {
+	.event-section {
+		height: 300px;
+	}
+	.event-section .overlay {
+		width: 95%;
+		text-align: center;
+	}
+}
+
+/* footer   */
+/* footer.css */
+.btn-warning {
+	background-color: #f1b02d;
+	border: none;
+}
+
+.form-control::placeholder {
+	color: #ccc; /* Light gray color for placeholder text */
+}
+footer {
+	font-family: "Ubuntu", sans-serif;
+	font-style: normal;
+}
+footer a {
+	color: #fff; /* Use yellowish color for links */
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+/* Search section   */
+.search-section .nav-link.active {
+	border-bottom: 2px solid #daa520;
+	color: #daa520;
+	background-color: white;
+	border-bottom: 2px solid #daa520;
+}
+.search-section .nav-link {
+	color: black;
+	border-radius: 0;
+}
+.search-section {
+	margin-top: 20px;
+}
+.search-input {
+	border-radius: 20px 0 0 20px;
+}
+.city-select {
+	border-radius: 0;
+}
+.search-btn {
+	border-radius: 0 20px 20px 0;
+	background-color: #daa520;
+	color: white;
+}
+.search-btn:hover {
+	background-color: #b38600;
+}
+
+@media (max-width: 767px) {
+	.input-group .form-control,
+	.input-group .form-select,
+	.input-group .btn {
+		width: 100%; /* Full width on small screens */
+	}
+}
+
+/* Custom styles for the filter box */
+.filter-box {
+	border: 1px solid #ddd;
+	padding: 20px;
+	border-radius: 10px;
+	max-width: 300px;
+}
+
+.filter-box select {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	background-color: #f5f5f5;
+}
+
+.range-slider {
+	margin: 20px 0;
+}
+
+.star-rating i {
+	font-size: 24px;
+	color: #ddd;
+}
+
+.star-rating i.active {
+	color: gold;
+}
+
+/* price range  */
+#price-range {
+	width: 100%;
+	-webkit-appearance: none;
+	background: transparent;
+}
+#price-range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	background-color: #656565;
+	border-radius: 50%;
+	cursor: pointer;
+	margin-top: -8px;
+}
+#price-range::-webkit-slider-runnable-track {
+	height: 4px;
+	background-color: #656565;
+}
+/* For Firefox */
+#price-range::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	background-color: #656565;
+	border-radius: 50%;
+	cursor: pointer;
+}
+#price-range::-moz-range-track {
+	height: 4px;
+	background-color: #656565;
+}
+.form-control-range {
+	position: relative;
+}
+.form-control-range::before {
+	content: "";
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: #daa520;
+	position: absolute;
+}
+.isShowFilter {
+	display: none;
+}
+
+/* Event Details */
+
+ .reservation-card {
+	background: url("/imgs/bg for reservation.png") center/cover; /* Replace with your image path */
+	color: white;
+	padding: 4rem;
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+}
+
+.event-details-page .reservation-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2); /* Dark overlay */
+	z-index: 1;
+}
+
+.event-details-page .reservation-card-content {
+	position: relative;
+	z-index: 2;
+}
+
+.event-details-page .btn-reserve {
+	background-color: #d1a837; /* Button color */
+	color: white;
+	border: none;
+	padding: 4px 20px;
+}
+
+.event-details-page .btn-reserve:hover {
+	background-color: #b38c2f; /* Darken button on hover */
+}
+
+.main-trending-dev {
+	height: 400px;
+	background: linear-gradient(to right, #3a3a3a 60%, #a67c00 100%);
+	border-radius: 20px;
+	position: relative;
+}
+.trending-dev {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	font-size: 30px;
+	font-weight: bold;
+	border-radius: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+}
+.trending-dev > div {
+	width: 50%;
+	margin: 50px;
+}
+.trending-dev > div h3 {
+	font-size: 35px;
+}
+.trending-dev > img {
+	margin: 50px;
+}
+
+@media (max-width: 767px) {
+	.main-trending-dev {
+		height: auto;
+		position: unset;
+	}
+	.trending-dev {
+		position: unset;
+		flex-direction: column;
+	}
+	.trending-dev > div {
+		width: 100%;
+		margin: 0;
+		text-align: center;
+	}
+	.trending-dev > div h3 {
+		font-size: 22px;
+	}
+	.trending-dev > img {
+		margin: 0;
+	}
+}
+/* Map */
+#map {
+	height: 500px; /* Adjust as needed */
+	width: 100%;
+	border-radius: 10px; /* Rounded corners */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#my-map {
+	width: 100%; /* Full width of the container */
+	height: 350px; /* Adjust height as needed */
+	border: none; /* No border around the iframe */
+	border-radius: 10px; /* Rounded corners */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+}
+
+/* Star Rating */
+.star-rating {
+	color: #ffc107;
+}
+.rating-outline {
+	color: #e0e0e0;
+}
+.attachment-link {
+	color: #ffc107;
+	text-decoration: none;
+	font-weight: bold;
+}
+.event-details-page .submit-btn {
+	background-color: #daa520;
+	border: none;
+	color: white;
+	width: fit-content;
+	padding: 6px 20px;
+	border-radius: 10px;
+}
+.event-details-page .submit-btn:hover {
+	background-color: #d9a306;
+}
+
+.stars img {
+	width: 35px;
+}
+
+.event-details-page .form-control {
+	width: 60%;
+	height: 60px;
+	resize: none;
+}
+
+@media (max-width: 768px) {
+	.form-control {
+		width: 100%;
+	}
+}
+
+/* user profile */
+.isShowProfileInfo {
+	display: none !important;
+}
+
+#profile-info-ul {
+	position: absolute;
+	background-color: white;
+	border: 1px solid #ddd;
+	padding: 8px 0;
+	width: 160px;
+	border-radius: 14px;
+	z-index: 888;
+	top: 115%;
+}
+
+@media (max-width: 991px) {
+	#profile-info-ul {
+		display: none !important;
+	}
+	#profile-info {
+		display: none !important;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.slider-section {
+    width: 50%;
+   margin: auto;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: relative;
+    height: 300px; /* Ensure height remains consistent */
+}
+
+.slider-container {
+    position: relative;
+    width: 70%;
+    height: 100%; /* Ensures consistent height */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.single-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Initially hidden */
+    background: #fff; /* Fallback background in case the image doesn't load */
+}
+
+.single-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-container.toggle-view .slider {
+    display: none; /* Hide the slider */
+}
+
+.slider-container.toggle-view .single-image {
+    display: block; /* Show the back image */
+}
