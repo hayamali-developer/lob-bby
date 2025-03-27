@@ -12,17 +12,18 @@ const FormPhoneInput = ({ name }) => {
 
   return (
     <div className="flex flex-col">
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => (
-          <PhoneInput
-            {...field}
-            country={"us"}
-            inputClass="!w-full ps-3 p-5 !border !border-gray-300 !rounded-xl !focus:outline-none !focus:ring-2 !focus:ring-yellow-500"
-          />
-        )}
-      />
+      <div className="flex items-center gap-2">
+        <input
+          name={name}
+          type="text"
+          className="w-[100px] h-[64px]  rounded-custom px-3 text-center focus:outline-none focus:ring-2 focus:ring-primary"
+        />
+
+        <input
+          type="tel"
+          className="w-[290px] h-[64px]  rounded-custom px-3 focus:outline-none focus:ring-2 focus:ring-primary"
+        />
+      </div>
       {errors[name] && (
         <p className="text-red-500 text-sm mt-1">{errors[name].message}</p>
       )}

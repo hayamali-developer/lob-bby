@@ -14,7 +14,7 @@ const FormInput = ({ name, placeholder, type = "text" }) => {
         {...register(name)}
         type={type}
         placeholder={placeholder}
-        className="p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        className="p-3 border border-none h-[64px] rounded-custom ps-6 focus:outline-none focus:ring-2 focus:ring-primary"
       />
       {errors[name] && (
         <p className="text-red-500 text-sm mt-1">{errors[name].message}</p>

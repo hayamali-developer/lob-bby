@@ -34,35 +34,68 @@ const Listings = () => {
   return (
     <>
       <ListsHeroSection title={"My Listing"} isbtn={true} />
-      <div className="w-[80%] mx-auto py-10">
+      <div className="container mx-auto py-10">
         <SearchWithFilterSection />
-        <div className="space-y-4">
-          {listings.map((item) => (
-            <div
-              key={item.id}
-              className="bg-gray-100 rounded-lg flex flex-wrap items-center shadow"
-            >
+        <div className="space-y-4 mt-6">
+          {listings.length > 0 ? (
+            listings.map((item) => (
+              <div
+                key={item.id}
+                className="bg-gray-100 rounded-custom flex flex-col md:flex-row items-center gap-4"
+              >
+                <div className="w-full md:w-[300px] flex-shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={300}
+                    height={200}
+                    className=" object-cover w-full"
+                  />
+                </div>
+
+                <div className="flex- text-center md:text-left">
+                  <h3 className="text-lg font-bold">{item.title}</h3>
+                  <p className="text-gray-600 line-clamp-2 md:line-clamp-3">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="flex mx-auto space-x-8">
+                  <div>
+                    <Image
+                      src="/imgs/edit.svg"
+                      alt="Edit"
+                      width={40}
+                      height={40}
+                      className="cursor-pointer"
+                    />
+                    <p className="font-bold text-lg pt-2">Edit</p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Image
+                      src="/imgs/remove.svg"
+                      alt="Remove"
+                      width={40}
+                      height={40}
+                      className="cursor-pointer"
+                    />
+
+                    <p className="font-bold text-lg pt-2">Remove</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="min-h-[70vh] flex justify-center items-center">
               <Image
-                src={item.image}
-                alt={item.title}
-                width={300}
-                height={200}
-                className=""
+                src="/imgs/empty.svg"
+                alt="empty Background"
+                width={250}
+                height={330}
+                priority
               />
-              <div className=" ml-4">
-                <h3 className="text-lg font-bold">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-              <div className="flex px-3 space-x-4">
-                <button className="text-gray-500 hover:text-blue-500">
-                  <FaEdit className="w-6 h-6" />
-                </button>
-                <button className="text-red-500 hover:text-red-700">
-                  <FaTrash className="w-6 h-6" />
-                </button>
-              </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </>
