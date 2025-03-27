@@ -28,8 +28,8 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
-      <div className="bg-white shadow-lg rounded-lg p-8 flex flex-col md:flex-row w-full max-w-4xl">
+    <div className="flex justify-center items-center min-h-screen px-4">
+      <div className="bg-[#f0f0f0] shadow-lg rounded-custom flex flex-col md:flex-row w-full max-w-4xl">
         {/*  */}
         <div className="w-1/2 hidden md:block relative">
           <Image
@@ -37,12 +37,12 @@ const SignupForm = () => {
             alt="Signup Illustration"
             layout="fill"
             objectFit="cover"
-            className="rounded-l-lg"
+            className="rounded-l-custom"
           />
         </div>
 
         <div className="w-full md:w-1/2 p-6 flex flex-col">
-          <h2 className="text-center text-xl font-bold mb-4">
+          <h2 className="text-center text-[#282828] text-[26px] font-bold mb-4">
             Sign up to Lobby lane as a partner
           </h2>
           <FormProvider {...methods}>
@@ -67,8 +67,8 @@ const SignupForm = () => {
               {/* Terms and Conditions Checkbox */}
               <div className="flex items-center gap-2">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm">
-                  I understand and agree to terms and conditions
+                <span className="text-[#282828]">
+                  yes I understand and agree to terms and conditions
                 </span>
               </div>
 
@@ -77,7 +77,7 @@ const SignupForm = () => {
           </FormProvider>
 
           {/* Login & Social Media */}
-          <div className="text-center mt-4 text-sm">
+          <div className="text-center mt-4 ">
             Already have an account?{" "}
             <Link href="/auth/partner/login" className="text-blue-600">
               Log In

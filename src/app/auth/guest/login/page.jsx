@@ -24,20 +24,18 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
-        <div className="bg-white shadow-lg rounded-lg p-8 flex flex-col md:flex-row w-full max-w-4xl">
-          {/* Image Section (Hidden on Small Screens) */}
+      <div className="flex justify-center items-center min-h-screen px-4">
+        <div className="bg-[#f0f0f0] shadow-lg rounded-custom p-8 flex flex-col md:flex-row w-full max-w-4xl">
           <div className="w-1/2 hidden md:block">
             <img
               src="/imgs/login bg.png"
               alt="Login Illustration"
-              className="w-full h-full object-cover rounded-l-lg"
+              className="w-full h-full object-cover rounded-l-custom"
             />
           </div>
 
-          {/* Form Section */}
           <div className="w-full md:w-1/2 p-6 flex flex-col">
-            <h2 className="text-center text-xl font-bold mb-4">
+            <h2 className="text-center text-[26px] text-[#282828] font-bold mb-4">
               Log in to Lobby lane
             </h2>
             <FormProvider {...methods}>
@@ -72,11 +70,23 @@ const LoginForm = () => {
 
             {/* Social Login Buttons */}
             <div className="flex justify-center gap-4">
-              <button className="text-red-500 text-xl">
-                {/* Google Icon */}
+              <button className="">
+                <Image
+                  src="/imgs/google 1.svg"
+                  alt="imgs"
+                  width={50}
+                  height={50}
+                  className=" object-cover w-full"
+                />
               </button>
-              <button className="text-blue-700 text-xl">
-                {/* Facebook Icon */}
+              <button className="">
+                <Image
+                  src="/imgs/facebook 1.svg"
+                  alt="imgs"
+                  width={50}
+                  height={50}
+                  className=" object-cover w-full"
+                />
               </button>
             </div>
 

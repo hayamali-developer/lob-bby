@@ -9,8 +9,8 @@ import RangeInput from "@/components/RangeInput";
 import ImageUploader from "@/components/ImageUploader";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "@/components/DatePicker";
+import AmenitiesCheckbox from "@/components/AmenitiesCheckbox";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -67,129 +67,129 @@ export default function AddListForm() {
   return (
     <>
       <ListsHeroSection title={"Add Lists"} isbtn={false} />
-      <div className="w-[75%] mx-auto my-8 bg-gray-100 rounded-xl shadow-lg">
-        <h2 className="bg-primary p-3 text-white font-bold text-lg rounded-t-lg">
+      <div className="container border mx-auto my-8 bg-[#FCFCFC] rounded-custom text-gray-700 ">
+        <h2 className="bg-primary p-3 text-white font-bold text-[35px] rounded-t-[20px]">
           Add List
         </h2>
-        <form className="p-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="space-y-4">
+        <form className="p-4 mb-12 px-8" onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-y-6">
             <div className="flex items-center space-x-4">
               <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Name</label>
+              <label className="text-gray-700 ms-8 text-[24px] font-medium">
+                Name
+              </label>
             </div>
             <input
               type="text"
-              className="w-1/2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="md:w-[480px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
             />
 
             {/* Location Input */}
-            <div className="flex items-center space-x-4">
-              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Location</label>
-            </div>
-            <input
-              type="text"
-              placeholder="Enter your address"
-              className="w-1/2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-
-            {/* Price Input */}
-            <div className="flex h-56 relative items-center space-x-4">
-              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Price range</label>
-              <RangeInput
-                label={""}
-                className={"w-[40%] absolute top-[8rem]"}
+            <div className="space-y-6">
+              <div className="flex items-center space-x-8">
+                <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+                <label className="text-gray-700 text-[24px] ms-8 font-medium">
+                  Location
+                </label>
+              </div>
+              <input
+                type="text"
+                placeholder="Enter your address"
+                className="md:w-[480px] h-[64px] w-full ms-8 ps-4 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
 
-            <div className="flex mt-[9rem] items-center space-x-4">
-              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Photos</label>
+            {/* Price Input */}
+            <div className="space-y-6">
+              <div className="flex items-center space-x-8">
+                <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+                <label className="text-gray-700 text-[24px]">Price range</label>
+              </div>
+              <RangeInput label={""} className={"w-[30%] ms-8"} />
             </div>
-            <div className="bg-primary p-3 rounded-xl w-fit">Upload</div>
-            <ImageUploader />
+
+            <div className="flex mt-[9rem] items-center space-x-8">
+              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+              <label className="text-gray-700 text-[24px]">Photos</label>
+            </div>
+            <div className="ms-8">
+              <div className="bg-primary mb-6 p-3 flex justify-center items-center text-white rounded-xl w-[152px] h-[64px]">
+                <h3 className="text-[24px]">Upload</h3>
+              </div>
+              <ImageUploader />
+            </div>
           </div>
           <div className="">
-            <div className="flex items-center justify-between my-8">
+            <div className="flex items-center justify-between flex-wrap gap-8 my-8">
               {/* Phone Number */}
               <div className="">
-                <div className="flex items-center space-x-4">
+                <div className="flex mb-3 items-center space-x-8">
                   <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-                  <label className="text-gray-700 font-medium">
+                  <label className="text-gray-700 text-[24px]">
                     Phone Number
                   </label>
                 </div>
-                <PhoneInput
-                  country={"eg"}
-                  value={phone}
-                  onChange={setPhone}
-                  inputClass="!w-full ps-3 p-5 !border !border-gray-300 !rounded-xl !focus:outline-none !focus:ring-2 !focus:ring-primary"
-                  containerClass="w-full"
-                />
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    className="w-[100px] h-[64px] border border-gray-300 rounded-custom px-3 text-center focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+
+                  <input
+                    type="tel"
+                    className="w-[290px] h-[64px] border border-gray-300 rounded-custom px-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
               </div>
 
               {/* Date Picker */}
-              <div className="">
-                <div className="flex items-center space-x-4">
+              <div className="mb-3">
+                <div className="flex items-center space-x-8">
                   <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-                  <label className="text-gray-700 font-medium">Date</label>
+                  <label className="text-gray-700 text-[24px]">Date</label>
                 </div>
-                <DatePicker
-                  selected={date}
-                  onChange={(date) => setDate(date)}
-                  className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  dateFormat="yyyy-MM-dd"
-                />
+                <DatePicker />
               </div>
             </div>
 
             {/* Description */}
             <div className="mb-4">
-              <div className="flex items-center space-x-4">
+              <div className="flex mb-3 items-center space-x-8">
                 <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-                <label className="text-gray-700 font-medium">Description</label>
+                <label className="text-gray-700  text-[24px]">
+                  Description
+                </label>
               </div>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="w-full p-2 border resize-none overflow-auto rounded-lg focus:outline-none focus:ring-2 focus:ring-yprimary"
-                rows="4"
-              ></textarea>
+              <div className="ms-8">
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="w-full h-[286px] p-2 border resize-none overflow-hidden rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
+                  // rows="4"
+                ></textarea>
+              </div>
             </div>
 
             {/* Location */}
-            <div className="mb-4">
-              <div className="flex items-center space-x-4">
+            <div className="mb-7">
+              <div className="flex mb-3 items-center space-x-8">
                 <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-                <label className="text-gray-700 font-medium">Near by</label>
+                <label className="text-gray-700  text-[24px]">Near by</label>
               </div>
               <input
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full h-[64px] rounded-custom p-2 border focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
           </div>
-          <div className="mb-4">
-            <div className="flex items-center space-x-4">
+          <div className="mb-8">
+            <div className="flex mb-3 items-center space-x-8">
               <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Anemites</label>
+              <label className="text-gray-700  text-[24px]">Animates</label>
             </div>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-              {amenitiesList.map((amenity) => (
-                <label key={amenity} className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    checked={selectedAmenities.includes(amenity)}
-                    onChange={() => handleCheckboxChange(amenity)}
-                    className="w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary"
-                  />
-                  <span className="text-gray-700">{amenity}</span>
-                </label>
-              ))}
-            </div>
+            <AmenitiesCheckbox />
 
             {errors.amenities && (
               <p className="text-red-500 text-sm mt-2">
@@ -197,69 +197,74 @@ export default function AddListForm() {
               </p>
             )}
           </div>
-          <div className="mb-4">
-            <div className="flex items-center space-x-4">
+          <div className="mb-8">
+            <div className="flex mb-3 items-center space-x-8">
               <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Opening Time</label>
+              <label className="text-gray-700  text-[24px]">Opening Time</label>
             </div>
-            <div className="flex space-x-3">
-              {/* Hour Selector */}
-              <select
-                className="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary"
-                value={hour}
-                onChange={(e) => setHour(e.target.value)}
-              >
-                <option value="" disabled>
-                  Hour
-                </option>
-                {[...Array(24).keys()].map((h) => (
-                  <option key={h} value={h}>
-                    {h.toString().padStart(2, "0")}
-                  </option>
-                ))}
+            <div className="flex space-x-6">
+              <div className="relative">
+                <select className="w-[161px] rounded-custom h-[64px] border border-gray-300  px-4 pr-10 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value=""></option>
+                  {[...Array(24).keys()].map((h) => {
+                    return (
+                      <option key={h} value={h}>
+                        {h.toString().padStart(2, "0")}
+                      </option>
+                    );
+                  })}
+                </select>
+                <img
+                  src="/imgs/Polygon 10.svg"
+                  alt="Arrow"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-6 pointer-events-none"
+                />
+              </div>
+              <div className="relative">
+                <select className="w-[161px] rounded-custom h-[64px] border border-gray-300 px-4 pr-10 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value=""></option>
+                  {[...Array(24).keys()].map((h) => {
+                    return (
+                      <option key={h} value={h}>
+                        {h.toString().padStart(2, "0")}
+                      </option>
+                    );
+                  })}
+                </select>
+                <img
+                  src="/imgs/Polygon 10.svg"
+                  alt="Arrow"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-6 pointer-events-none"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="my-10">
+            <div className="flex mb-3 items-center space-x-8">
+              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+              <label className="text-gray-700  text-[24px]">Categories</label>
+            </div>
+            <div className="relative w-full md:w-[430px]">
+              <select className="w-full h-[64px] border border-gray-300 rounded-custom px-4 pr-12 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary">
+                <option value=""></option>
+                <option value="restaurant">Restaurant</option>
+                <option value="cafe">Cafe</option>
               </select>
-
-              {/* Minute Selector */}
-              <select
-                className="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary"
-                value={minute}
-                onChange={(e) => setMinute(e.target.value)}
-              >
-                <option value="" disabled>
-                  Minutes
-                </option>
-                {[0, 15, 30, 45].map((m) => (
-                  <option key={m} value={m}>
-                    {m.toString().padStart(2, "0")}
-                  </option>
-                ))}
-              </select>
+              <img
+                src="/imgs/Polygon 10.svg"
+                alt="Arrow"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none"
+              />
             </div>
           </div>
           <div className="mb-4">
-            <div className="flex items-center space-x-4">
+            <div className="flex mb-3 items-center space-x-8">
               <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Category</label>
-            </div>
-            <select
-              className=" w-1/3 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-              {...register("category")}
-            >
-              <option value="">Select a category</option>
-              <option value="restaurant">Restaurant</option>
-              <option value="cafe">Cafe</option>
-              <option value="hotel">Hotel</option>
-              <option value="resort">Resort</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <div className="flex items-center space-x-4">
-              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 font-medium">Provider Link</label>
+              <label className="text-gray-700 text-[24px]">Provide Link</label>
             </div>
             <input
               type="text"
-              className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full h-[64px] p-2 border rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
               {...register("providerLink")}
             />
             {errors.providerLink && (
@@ -271,7 +276,7 @@ export default function AddListForm() {
           <div className="flex justify-start">
             <button
               type="submit"
-              className="bg-primary text-white py-2 px-6 rounded-lg"
+              className="bg-primary mt-3 text-[24px] rounded-custom text-white py-2 px-6"
             >
               Save
             </button>

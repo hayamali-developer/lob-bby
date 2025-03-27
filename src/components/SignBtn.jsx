@@ -5,7 +5,7 @@ const SignBtn = ({ text }) => {
     <div>
       <button
         type="submit"
-        className="w-full bg-primary text-white p-3 rounded-xl "
+        className="w-full bg-primary text-white p-3 text-[26px] rounded-custom "
       >
         {text}
       </button>

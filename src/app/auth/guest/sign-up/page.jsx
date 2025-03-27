@@ -27,9 +27,13 @@ const SignupForm = () => {
     console.log(data);
   };
 
+  const options = [
+    { label: "Personal", value: "personal", color: "primary" },
+    { label: "Corporate", value: "corporate", color: "gray-500" },
+  ];
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
-      <div className="bg-white shadow-lg rounded-lg p-8 flex flex-col md:flex-row w-full max-w-4xl">
+    <div className="flex justify-center items-center min-h-screen  px-4">
+      <div className="bg-[#f0f0f0] shadow-lg rounded-lg flex flex-col md:flex-row w-full max-w-4xl">
         <div className="w-1/2 hidden md:block relative">
           <Image
             src="/imgs/login as a partner bg.png"
@@ -41,7 +45,7 @@ const SignupForm = () => {
         </div>
 
         <div className="w-full md:w-1/2 p-6 flex flex-col">
-          <h2 className="text-center text-xl font-bold mb-4">
+          <h2 className="text-center text-[#282828] text-[26px] font-bold mb-4">
             Sign up to Lobby lane
           </h2>
           <FormProvider {...methods}>
@@ -62,36 +66,34 @@ const SignupForm = () => {
                 type="password"
               />
               <FormPhoneInput name="phone" />
-
-              {/* Profile Selection */}
-              <div className="flex gap-4">
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="profile"
-                    value="personal"
-                    className="form-radio"
-                  />
-                  Personal
-                </label>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="profile"
-                    value="corporate"
-                    className="form-radio"
-                  />
+              <div className="flex items-center bg-white rounded-custom text-[18px] px-4 py-2 space-x-4">
+                {/* العنوان الثابت بدون radio */}
+                <span className="text-gray-700 text-[20px] font-bold">
                   Profile
-                </label>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="profile"
-                    value="corporate"
-                    className="form-radio"
-                  />
-                  Corporate
-                </label>
+                </span>
+
+                {/* التكرار باستخدام map */}
+                {options.map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-2 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="profile"
+                      value={option.value}
+                      className="hidden peer"
+                    />
+                    <span
+                      className={`w-4 h-4 border bg-gray-400 rounded-full flex items-center justify-center peer-checked:border-${option.color}`}
+                    >
+                      <span
+                        className={`w-2 h-2 bg-${option.color} rounded-full peer-checked:block`}
+                      ></span>
+                    </span>
+                    <span className="text-gray-700">{option.label}</span>
+                  </label>
+                ))}
               </div>
 
               {/* Terms and Conditions Checkbox */}
@@ -114,11 +116,23 @@ const SignupForm = () => {
             </Link>
           </div>
           <div className="flex justify-center gap-4 mt-4">
-            <button className="text-red-500 text-xl">
-              {/* <FaGoogle /> */}
+            <button className="">
+              <Image
+                src="/imgs/google 1.svg"
+                alt="imgs social"
+                width={50}
+                height={50}
+                className=" object-cover w-full"
+              />
             </button>
-            <button className="text-blue-700 text-xl">
-              {/* <FaFacebook /> */}
+            <button className="">
+              <Image
+                src="/imgs/facebook 1.svg"
+                alt="imgs social"
+                width={50}
+                height={50}
+                className=" object-cover w-full"
+              />
             </button>
           </div>
         </div>
