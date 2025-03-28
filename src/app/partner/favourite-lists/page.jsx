@@ -2,7 +2,6 @@
 import ImageCard from "@/components/ImageCard";
 import Image from "next/image";
 import React from "react";
-import { FiX } from "react-icons/fi";
 
 const initialFavourites = [
   {

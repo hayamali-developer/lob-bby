@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { FaEdit, FaTrash } from "react-icons/fa";
 import ListsHeroSection from "@/components/ListsHeroSection";
 import SearchWithFilterSection from "@/components/SearchWithFilterSection";
 

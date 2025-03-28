@@ -1,10 +1,8 @@
 "use client";
 import React from "react";
-import { useFormContext, Controller } from "react-hook-form";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import { useFormContext } from "react-hook-form";
 
-const FormPhoneInput = ({ name }) => {
+const FormPhoneInput = ({ name, placeholder, isform }) => {
   const {
     control,
     formState: { errors },
@@ -21,7 +19,10 @@ const FormPhoneInput = ({ name }) => {
 
         <input
           type="tel"
-          className="w-[290px] h-[64px]  rounded-custom px-3 focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder={placeholder}
+          className={`${
+            isform ? "w-full" : "w-[290px]"
+          } h-[64px] rounded-custom ps-6 focus:outline-none focus:ring-2 focus:ring-primary`}
         />
       </div>
       {errors[name] && (

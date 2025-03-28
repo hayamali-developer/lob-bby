@@ -8,7 +8,6 @@ import FormPhoneInput from "@/components/PhoneInput";
 import Link from "next/link";
 import SignBtn from "@/components/SignBtn";
 import Image from "next/image";
-// import { FaGoogle, FaFacebook } from "react-icons/fa";
 
 const schema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -32,15 +31,15 @@ const SignupForm = () => {
     { label: "Corporate", value: "corporate", color: "gray-500" },
   ];
   return (
-    <div className="flex justify-center items-center min-h-screen  px-4">
-      <div className="bg-[#f0f0f0] shadow-lg rounded-lg flex flex-col md:flex-row w-full max-w-4xl">
+    <div className="flex justify-center items-center my-6 min-h-screen  px-4">
+      <div className="bg-[#f0f0f0] rounded-custom flex flex-col md:flex-row w-full max-w-5xl">
         <div className="w-1/2 hidden md:block relative">
           <Image
             src="/imgs/login as a partner bg.png"
             alt="Signup Illustration"
             layout="fill"
             objectFit="cover"
-            className="rounded-l-lg"
+            className="rounded-l-custom"
           />
         </div>
 
@@ -65,8 +64,12 @@ const SignupForm = () => {
                 placeholder="Password"
                 type="password"
               />
-              <FormPhoneInput name="phone" />
-              <div className="flex items-center bg-white rounded-custom text-[18px] px-4 py-2 space-x-4">
+              <FormPhoneInput
+                name="phone"
+                placeholder="Phone Number"
+                isform={true}
+              />
+              <div className="flex items-center justify-center text-[20px] bg-white rounded-custom px-4 py-2 space-x-4">
                 {/* العنوان الثابت بدون radio */}
                 <span className="text-gray-700 text-[20px] font-bold">
                   Profile
@@ -85,10 +88,10 @@ const SignupForm = () => {
                       className="hidden peer"
                     />
                     <span
-                      className={`w-4 h-4 border bg-gray-400 rounded-full flex items-center justify-center peer-checked:border-${option.color}`}
+                      className={`w-6 h-6  bg-gray-300 rounded-full flex items-center justify-center peer-checked:bg-${option.color}`}
                     >
                       <span
-                        className={`w-2 h-2 bg-${option.color} rounded-full peer-checked:block`}
+                        className={`w-3 h-3 bg-${option.color} rounded-full peer-checked:block`}
                       ></span>
                     </span>
                     <span className="text-gray-700">{option.label}</span>
@@ -96,22 +99,19 @@ const SignupForm = () => {
                 ))}
               </div>
 
-              {/* Terms and Conditions Checkbox */}
-              <div className="flex items-center gap-2">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm">
-                  I understand and agree to terms and conditions
-                </span>
-              </div>
-
               <SignBtn text={"Sign Up"} />
             </form>
           </FormProvider>
-
+          <div className="flex mt-4 items-center gap-2">
+            <input type="checkbox" className="form-checkbox scale-150 mr-2" />
+            <span className="text-[18px] text-[#232323]">
+              yes I understand and agree to terms and conditions
+            </span>
+          </div>
           {/* Login & Social Media */}
-          <div className="text-center mt-4 text-sm">
+          <div className="text-center text-[#232323] text-[18px] mt-2 text-">
             Already have an account?{" "}
-            <Link href="/auth/guest/login" className="text-blue-600">
+            <Link href="/auth/guest/login" className="font-bold">
               Log In
             </Link>
           </div>

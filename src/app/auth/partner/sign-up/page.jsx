@@ -8,7 +8,6 @@ import FormPhoneInput from "@/components/PhoneInput";
 import Link from "next/link";
 import SignBtn from "@/components/SignBtn";
 import Image from "next/image";
-// import { FaGoogle, FaFacebook } from "react-icons/fa";
 
 const schema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -62,7 +61,7 @@ const SignupForm = () => {
                 placeholder="Password"
                 type="password"
               />
-              <FormPhoneInput name="phone" />
+              <FormPhoneInput name="phone" isform={true} />
 
               {/* Terms and Conditions Checkbox */}
               <div className="flex items-center gap-2">
@@ -82,14 +81,6 @@ const SignupForm = () => {
             <Link href="/auth/partner/login" className="text-blue-600">
               Log In
             </Link>
-          </div>
-          <div className="flex justify-center gap-4 mt-4">
-            <button className="text-red-500 text-xl">
-              {/* <FaGoogle /> */}
-            </button>
-            <button className="text-blue-700 text-xl">
-              {/* <FaFacebook /> */}
-            </button>
           </div>
         </div>
       </div>

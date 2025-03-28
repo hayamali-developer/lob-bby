@@ -14,12 +14,12 @@ const ListsHeroSection = ({ isbtn, title }) => {
       />
 
       {/* المحتوى فوق الصورة */}
-      <div className="absolute inset-0 w-1/5 bg-black/50 flex items-center pl-10">
-        <div className="text-white">
-          <h2 className="text-2xl font-bold">{title}</h2>
-          <p className="text-sm py-4">Welcome Partner</p>
+      <div className="absolute inset-0 w-1/4 bg-black/75 flex items-center">
+        <div className="text-white mx-auto">
+          <h2 className="text-[40px] font-bold">{title}</h2>
+          <p className="py-4 text-[20px]">Welcome Partner</p>
           {isbtn && (
-            <button className="bg-primary text-black w-full  py-2 rounded-2xl mt-2">
+            <button className="bg-primary text-white w-full  py-3 px-6 rounded-custom mt-2">
               Add List
             </button>
           )}

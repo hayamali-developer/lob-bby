@@ -1,5 +1,4 @@
 @import "flowbite/src/themes/default";
-@import "react-phone-input-2/lib/style.css";
 
 @tailwind base;
 @tailwind components;
