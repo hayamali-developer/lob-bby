@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import SignBtn from "@/components/SignBtn";
 import ListsHeroSection from "@/components/ListsHeroSection";
 import Image from "next/image";
+import CustomPopup from "@/components/CustomPopup";
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
@@ -15,14 +16,19 @@ const schema = z.object({
 });
 
 const LoginForm = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
+
   const methods = useForm({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (data) => {
     console.log(data);
+    setIsPopupOpen(true);
   };
-
+  const handleContinue = () => {
+    setIsPopupOpen(false);
+  };
   return (
     <>
       <div className="flex justify-center items-center min-h-screen px-4">
@@ -90,7 +96,15 @@ const LoginForm = () => {
                 />
               </button>
             </div>
-
+            {isPopupOpen && (
+              <CustomPopup
+                title="Add List"
+                image="/imgs/add listing.png"
+                buttonText="Continue"
+                onConfirm={handleContinue}
+                onClose={() => setIsPopupOpen(false)}
+              />
+            )}
             {/* Signup Link */}
             <div className="text-center text-[#232323] mt-4 text-sm">
               Did you join Lobby lanes yet?
