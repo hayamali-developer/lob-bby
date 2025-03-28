@@ -27,12 +27,12 @@ const ImageUploader = () => {
 
   return (
     <>
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
         {Object.keys(images).map((key, index) => (
           <div
             key={key}
-            className={`bg-gray-300 rounded-[20px] cursor-pointer overflow-hidden hover:bg-gray-400 transition h-[161px] flex justify-center items-center ${
-              index === 0 ? "flex-[2]" : "flex-1"
+            className={`bg-gray-300 rounded-[20px] cursor-pointer overflow-hidden hover:bg-gray-400 transition h-[161px] flex justify-center items-center w-full ${
+              index === 0 ? "md:flex-[2]" : "md:flex-1"
             }`}
             onClick={() => fileInputs[key].current?.click()}
           >

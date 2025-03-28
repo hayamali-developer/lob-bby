@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
@@ -67,10 +67,13 @@ export default function AddListForm() {
             </div>
             <input
               type="text"
+              {...register("name")}
               className="md:w-[480px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
             />
+            {errors.name && (
+              <p className="text-red-500 ms-8">{errors.name.message}</p>
+            )}
 
-            {/* Location Input */}
             <div className="space-y-6">
               <div className="flex items-center space-x-8">
                 <div className="w-6 h-3 bg-primary rounded-2xl"></div>
@@ -80,9 +83,12 @@ export default function AddListForm() {
               </div>
               <input
                 type="text"
-                placeholder="Enter your address"
-                className="md:w-[480px] h-[64px] w-full ms-8 ps-4 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
+                {...register("location")}
+                className="md:w-[480px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
               />
+              {errors.location && (
+                <p className="text-red-500 ms-8">{errors.location.message}</p>
+              )}
             </div>
 
             {/* Price Input */}
@@ -126,9 +132,13 @@ export default function AddListForm() {
                   />
 
                   <input
-                    type="tel"
-                    className="w-[290px] h-[64px] border border-gray-300 rounded-custom px-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    type="text"
+                    {...register("phone")}
+                    className="md:w-[290px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 ms-8">{errors.phone.message}</p>
+                  )}
                 </div>
               </div>
 
@@ -138,7 +148,16 @@ export default function AddListForm() {
                   <div className="w-6 h-3 bg-primary rounded-2xl"></div>
                   <label className="text-gray-700 text-[24px]">Date</label>
                 </div>
-                <DatePicker />
+                <Controller
+                  control={control}
+                  name="date"
+                  render={({ field }) => (
+                    <DatePicker value={field.value} onChange={field.onChange} />
+                  )}
+                />
+                {errors.date && (
+                  <p className="text-red-500 ms-8">{errors.date.message}</p>
+                )}
               </div>
             </div>
 
@@ -153,10 +172,16 @@ export default function AddListForm() {
               <div className="ms-8">
                 <textarea
                   value={description}
+                  {...register("description")}
                   onChange={(e) => setDescription(e.target.value)}
                   className="w-full h-[286px] p-2 border resize-none overflow-hidden rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
                   // rows="4"
                 ></textarea>
+                {errors.description && (
+                  <p className="text-red-500 ms-8">
+                    {errors.description.message}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -235,11 +260,17 @@ export default function AddListForm() {
               <label className="text-gray-700  text-[24px]">Categories</label>
             </div>
             <div className="relative w-full md:w-[430px]">
-              <select className="w-full h-[64px] border border-gray-300 rounded-custom px-4 pr-12 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary">
+              <select
+                {...register("category")}
+                className="w-full h-[64px] border border-gray-300 rounded-custom px-4 pr-12 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary"
+              >
                 <option value=""></option>
                 <option value="restaurant">Restaurant</option>
                 <option value="cafe">Cafe</option>
               </select>
+              {errors.category && (
+                <p className="text-red-500 ms-8">{errors.category.message}</p>
+              )}
               <img
                 src="/imgs/Polygon 10.svg"
                 alt="Arrow"

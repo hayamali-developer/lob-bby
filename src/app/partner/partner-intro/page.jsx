@@ -25,7 +25,7 @@ function PartnerIntro() {
     },
   ];
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full py-12">
       <div className="absolute inset-0 -z-10">
         <Image
           src="/imgs/intro bg.png"
@@ -45,7 +45,7 @@ function PartnerIntro() {
           {sections.map((item, i) => (
             <Link
               key={i}
-              href={"/auth/partner/sign-up"}
+              href={"/partner/add-lists"}
               className="flex flex-col items-center justify-around bg-white hover:bg-gray-100 text-black font-medium py-4 px-6 rounded-lg shadow-md w-[280px] sm:w-[340px] md:w-[400px] h-[200px] md:h-[260px] transition duration-300"
             >
               <div className="relative w-[130px] h-[110px] md:w-[170px] md:h-[140px]">

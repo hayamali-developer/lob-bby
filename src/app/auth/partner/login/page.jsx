@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -7,6 +7,8 @@ import FormInput from "@/components/FormInput";
 import Link from "next/link";
 import SignBtn from "@/components/SignBtn";
 import Image from "next/image";
+import CustomPopup from "@/components/CustomPopup";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
@@ -14,24 +16,30 @@ const schema = z.object({
 });
 
 const LoginForm = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const methods = useForm({
     resolver: zodResolver(schema),
   });
 
+  const router = useRouter();
   const onSubmit = (data) => {
     console.log(data);
+    setIsPopupOpen(true);
   };
-
+  const handleContinue = () => {
+    setIsPopupOpen(false);
+    router.push("/partner/partner-intro");
+  };
   return (
     <div className="flex justify-center items-center min-h-screen  px-4">
       <div className="bg-[#f0f0f0] rounded-custom  flex flex-col md:flex-row w-full max-w-4xl">
-        <div className="w-1/2 hidden md:block relative">
+        <div className="w-full md:w-1/2 h-64 md:h-auto relative">
           <Image
             src="/imgs/login bg.png"
             alt="Signup Illustration"
             layout="fill"
             objectFit="cover"
-            className="rounded-l-custom"
+            className="rounded-t-custom md:rounded-l-custom object-contain"
           />
         </div>
 
@@ -75,12 +83,20 @@ const LoginForm = () => {
               {/* Facebook Icon */}
             </button>
           </div>
-
+          {isPopupOpen && (
+            <CustomPopup
+              title="Add List"
+              image="/imgs/add listing.png"
+              buttonText="Continue"
+              onConfirm={handleContinue}
+              onClose={() => setIsPopupOpen(false)}
+            />
+          )}
           <div className="text-center mt-4 text-sm">
             Did you join Lobby lanes yet?
             <Link
               href="/auth/partner/sign-up"
-              className="text-blue-600 font-semibold"
+              className="text-[#282828] font-bold"
             >
               {" "}
               Sign up

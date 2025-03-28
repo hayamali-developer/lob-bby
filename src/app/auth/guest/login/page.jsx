@@ -16,28 +16,23 @@ const schema = z.object({
 });
 
 const LoginForm = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
-
   const methods = useForm({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (data) => {
     console.log(data);
-    setIsPopupOpen(true);
   };
-  const handleContinue = () => {
-    setIsPopupOpen(false);
-  };
+
   return (
     <>
       <div className="flex justify-center items-center min-h-screen px-4">
         <div className="bg-[#f0f0f0] shadow-lg rounded-custom flex flex-col md:flex-row w-full max-w-4xl">
-          <div className="w-1/2 hidden md:block">
+          <div className="w-full md:w-1/2 h-64 md:h-auto relative">
             <img
               src="/imgs/login bg.png"
               alt="Login Illustration"
-              className="w-full h-full object-cover rounded-l-custom"
+              className="w-full h-full object-cover rounded-t-custom md:rounded-l-custom"
             />
           </div>
 
@@ -96,21 +91,13 @@ const LoginForm = () => {
                 />
               </button>
             </div>
-            {isPopupOpen && (
-              <CustomPopup
-                title="Add List"
-                image="/imgs/add listing.png"
-                buttonText="Continue"
-                onConfirm={handleContinue}
-                onClose={() => setIsPopupOpen(false)}
-              />
-            )}
+
             {/* Signup Link */}
             <div className="text-center text-[#232323] mt-4 text-sm">
               Did you join Lobby lanes yet?
               <Link
                 href="/auth/guest/sign-up"
-                className="text-blue-600 font-semibold"
+                className="text-[#282828] font-bold"
               >
                 {" "}
                 Sign up

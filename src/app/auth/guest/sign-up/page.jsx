@@ -14,7 +14,11 @@ const schema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  phone: z.string().min(10, "Invalid phone number"),
+  phone: z
+    .string()
+    .min(10, "رقم الهاتف يجب أن يحتوي على 10 أرقام على الأقل")
+    .max(15, "رقم الهاتف طويل جدًا")
+    .regex(/^[0-9]+$/, "رقم الهاتف يجب أن يحتوي على أرقام فقط"),
 });
 
 const SignupForm = () => {
@@ -26,25 +30,21 @@ const SignupForm = () => {
     console.log(data);
   };
 
-  const options = [
-    { label: "Personal", value: "personal", color: "primary" },
-    { label: "Corporate", value: "corporate", color: "gray-500" },
-  ];
   return (
-    <div className="flex justify-center items-center my-6 min-h-screen  px-4">
+    <div className="flex flex-col md:flex-row justify-center items-center my-6 min-h-screen  px-4">
       <div className="bg-[#f0f0f0] rounded-custom flex flex-col md:flex-row w-full max-w-5xl">
-        <div className="w-1/2 hidden md:block relative">
+        <div className="w-full md:w-1/2 h-64 md:h-auto relative">
           <Image
             src="/imgs/login as a partner bg.png"
             alt="Signup Illustration"
             layout="fill"
             objectFit="cover"
-            className="rounded-l-custom"
+            className="rounded-t-custom md:rounded-l-custom object-contain"
           />
         </div>
 
         <div className="w-full md:w-1/2 p-6 flex flex-col">
-          <h2 className="text-center text-[#282828] text-[26px] font-bold mb-4">
+          <h2 className="text-center text-[#282828] text-[16px] md:text-[26px] font-bold mb-4">
             Sign up to Lobby lane
           </h2>
           <FormProvider {...methods}>
@@ -69,34 +69,37 @@ const SignupForm = () => {
                 placeholder="Phone Number"
                 isform={true}
               />
-              <div className="flex items-center justify-center text-[20px] bg-white rounded-custom px-4 py-2 space-x-4">
-                {/* العنوان الثابت بدون radio */}
-                <span className="text-gray-700 text-[20px] font-bold">
-                  Profile
-                </span>
+              <div className="flex items-center justify-center  text-[16px] md:text-[20px] bg-white rounded-custom px-4 py-2 space-x-4">
+                <span className="text-gray-700 font-bold">Profile</span>
 
-                {/* التكرار باستخدام map */}
-                {options.map((option) => (
-                  <label
-                    key={option.value}
-                    className="flex items-center gap-2 cursor-pointer"
-                  >
-                    <input
-                      type="radio"
-                      name="profile"
-                      value={option.value}
-                      className="hidden peer"
-                    />
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="profile"
+                    value="personal"
+                    className="hidden peer"
+                  />
+                  <span className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center peer-checked:bg-primary">
                     <span
-                      className={`w-6 h-6  bg-gray-300 rounded-full flex items-center justify-center peer-checked:bg-${option.color}`}
-                    >
-                      <span
-                        className={`w-3 h-3 bg-${option.color} rounded-full peer-checked:block`}
-                      ></span>
-                    </span>
-                    <span className="text-gray-700">{option.label}</span>
-                  </label>
-                ))}
+                      // style={{ backgroundColor: "blue" }}
+                      className="w-3 h-3 rounded-full peer-checked:block"
+                    ></span>
+                  </span>
+                  <span className="text-gray-700">Personal</span>
+                </label>
+
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="profile"
+                    value="corporate"
+                    className="hidden peer"
+                  />
+                  <span className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center peer-checked:bg-primary">
+                    <span className="w-3 h-3 rounded-full peer-checked:block"></span>
+                  </span>
+                  <span className="text-gray-700">Corporate</span>
+                </label>
               </div>
 
               <SignBtn text={"Sign Up"} />
@@ -108,7 +111,6 @@ const SignupForm = () => {
               yes I understand and agree to terms and conditions
             </span>
           </div>
-          {/* Login & Social Media */}
           <div className="text-center text-[#232323] text-[18px] mt-2 text-">
             Already have an account?{" "}
             <Link href="/auth/guest/login" className="font-bold">
