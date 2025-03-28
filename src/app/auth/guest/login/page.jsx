@@ -7,6 +7,7 @@ import FormInput from "@/components/FormInput";
 import Link from "next/link";
 import SignBtn from "@/components/SignBtn";
 import ListsHeroSection from "@/components/ListsHeroSection";
+import Image from "next/image";
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
@@ -25,7 +26,7 @@ const LoginForm = () => {
   return (
     <>
       <div className="flex justify-center items-center min-h-screen px-4">
-        <div className="bg-[#f0f0f0] shadow-lg rounded-custom p-8 flex flex-col md:flex-row w-full max-w-4xl">
+        <div className="bg-[#f0f0f0] shadow-lg rounded-custom flex flex-col md:flex-row w-full max-w-4xl">
           <div className="w-1/2 hidden md:block">
             <img
               src="/imgs/login bg.png"
@@ -91,7 +92,7 @@ const LoginForm = () => {
             </div>
 
             {/* Signup Link */}
-            <div className="text-center mt-4 text-sm">
+            <div className="text-center text-[#232323] mt-4 text-sm">
               Did you join Lobby lanes yet?
               <Link
                 href="/auth/guest/sign-up"

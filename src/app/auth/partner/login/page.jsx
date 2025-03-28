@@ -31,7 +31,7 @@ const LoginForm = () => {
             alt="Signup Illustration"
             layout="fill"
             objectFit="cover"
-            className="rounded-l-lg"
+            className="rounded-l-custom"
           />
         </div>
 

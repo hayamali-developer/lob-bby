@@ -1,14 +1,12 @@
 "use client";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
 import ListsHeroSection from "@/components/ListsHeroSection";
 import RangeInput from "@/components/RangeInput";
 import ImageUploader from "@/components/ImageUploader";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 import DatePicker from "@/components/DatePicker";
 import AmenitiesCheckbox from "@/components/AmenitiesCheckbox";
 
@@ -49,21 +47,9 @@ export default function AddListForm() {
   const onSubmit = (data) => {
     console.log({ ...data, images });
   };
-  const [phone, setPhone] = useState("");
-  const [date, setDate] = useState(null);
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [hour, setHour] = useState("");
-  const [minute, setMinute] = useState("");
 
-  const selectedAmenities = watch("amenities", []);
-  const handleCheckboxChange = (amenity) => {
-    const updatedAmenities = selectedAmenities.includes(amenity)
-      ? selectedAmenities.filter((item) => item !== amenity)
-      : [...selectedAmenities, amenity];
-
-    setValue("amenities", updatedAmenities, { shouldValidate: true });
-  };
   return (
     <>
       <ListsHeroSection title={"Add Lists"} isbtn={false} />
@@ -105,7 +91,11 @@ export default function AddListForm() {
                 <div className="w-6 h-3 bg-primary rounded-2xl"></div>
                 <label className="text-gray-700 text-[24px]">Price range</label>
               </div>
-              <RangeInput label={""} className={"w-[30%] ms-8"} />
+              <RangeInput
+                max={200000}
+                label={""}
+                className={"w-full md:w-1/3 ms-6"}
+              />
             </div>
 
             <div className="flex mt-[9rem] items-center space-x-8">
