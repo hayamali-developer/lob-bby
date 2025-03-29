@@ -8,6 +8,7 @@ import FormPhoneInput from "@/components/PhoneInput";
 import Link from "next/link";
 import SignBtn from "@/components/SignBtn";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -21,22 +22,22 @@ const SignupForm = () => {
   const methods = useForm({
     resolver: zodResolver(schema),
   });
-
+  const router = useRouter();
   const onSubmit = (data) => {
     console.log(data);
+    router.push("/auth/partner/login");
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-4">
+    <div className="flex flex-col md:flex-row justify-center items-center my-8 min-h-screen px-4">
       <div className="bg-[#f0f0f0] shadow-lg rounded-custom flex flex-col md:flex-row w-full max-w-4xl">
-        {/*  */}
-        <div className="w-1/2 hidden md:block relative">
+        <div className="w-full md:w-1/2 h-64 md:h-auto relative">
           <Image
             src="/imgs/sign up as a partner bg.png"
             alt="Signup Illustration"
             layout="fill"
             objectFit="cover"
-            className="rounded-l-custom"
+            className="rounded-t-custom md:rounded-l-custom object-contain"
           />
         </div>
 
@@ -65,7 +66,7 @@ const SignupForm = () => {
 
               {/* Terms and Conditions Checkbox */}
               <div className="flex items-center gap-2">
-                <input type="checkbox" className="form-checkbox" />
+                <input type="checkbox" className="form-checkbox scale-150" />
                 <span className="text-[#282828]">
                   yes I understand and agree to terms and conditions
                 </span>
@@ -78,7 +79,7 @@ const SignupForm = () => {
           {/* Login & Social Media */}
           <div className="text-center mt-4 ">
             Already have an account?{" "}
-            <Link href="/auth/partner/login" className="text-blue-600">
+            <Link href="/auth/partner/login" className="text-[#282828] bold">
               Log In
             </Link>
           </div>

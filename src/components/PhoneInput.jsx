@@ -18,6 +18,7 @@ const FormPhoneInput = ({ name, placeholder, isform }) => {
         />
 
         <input
+          name={name}
           type="tel"
           placeholder={placeholder}
           className={`${

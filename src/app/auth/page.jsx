@@ -20,23 +20,23 @@ export default function Signup() {
 					Sign up to Lobby lane
 				</h1>
 
-				<div className='flex gap-6 flex-wrap justify-center px-4'>
-					<Link
-						href={"partner/partner-intro"}
-						className='flex flex-col justify-around w-[280px] sm:w-[340px] md:w-[400px] h-[200px] md:h-[260px] items-center bg-primary text-white font-medium py-4 px-6 rounded-lg shadow-md transition duration-300'
-					>
-						<div className='relative w-[140px] h-[100px] md:w-[200px] md:h-[140px]'>
-							<Image
-								src='/imgs/partner.png'
-								alt='Partner'
-								fill
-								style={{ objectFit: "contain" }}
-							/>
-						</div>
-						<span className='mt-2 text-[24px] md:text-[30px]'>
-							As a partner
-						</span>
-					</Link>
+        <div className="flex gap-6 flex-wrap justify-center px-4">
+          <Link
+            href={"auth/partner/sign-up"}
+            className="flex flex-col justify-around w-[280px] sm:w-[340px] md:w-[400px] h-[200px] md:h-[260px] items-center bg-primary text-white font-medium py-4 px-6 rounded-lg shadow-md transition duration-300"
+          >
+            <div className="relative w-[140px] h-[100px] md:w-[200px] md:h-[140px]">
+              <Image
+                src="/imgs/partner.png"
+                alt="Partner"
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <span className="mt-2 text-[24px] md:text-[30px]">
+              As a partner
+            </span>
+          </Link>
 
 					<Link
 						href={"auth/guest/sign-up"}

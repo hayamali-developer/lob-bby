@@ -33,9 +33,9 @@ const Listings = () => {
   return (
     <>
       <ListsHeroSection title={"My Listing"} isbtn={true} />
-      <div className="container mx-auto py-10">
+      <div className="container border  mx-auto py-10">
         <SearchWithFilterSection />
-        <div className="space-y-4 mt-6">
+        <div className="space-y-6 mt-6">
           {listings.length > 0 ? (
             listings.map((item) => (
               <div
@@ -52,7 +52,7 @@ const Listings = () => {
                   />
                 </div>
 
-                <div className="flex- text-center md:text-left">
+                <div className=" text-center md:text-left">
                   <h3 className="text-lg font-bold">{item.title}</h3>
                   <p className="text-gray-600 line-clamp-2 md:line-clamp-3">
                     {item.description}

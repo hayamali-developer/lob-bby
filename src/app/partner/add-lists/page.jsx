@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
@@ -50,46 +50,46 @@ export default function AddListForm() {
 	const [description, setDescription] = useState("");
 	const [location, setLocation] = useState("");
 
-	return (
-		<>
-			<ListsHeroSection
-				title={"Add Lists"}
-				isbtn={false}
-			/>
-			<div className='container border mx-auto my-8 bg-[#FCFCFC] rounded-custom text-gray-700 '>
-				<h2 className='bg-primary px-8 text-white font-bold text-[32px] rounded-t-[20px]'>
-					Add List
-				</h2>
-				<form
-					className='p-4 mb-12 px-8'
-					onSubmit={handleSubmit(onSubmit)}
-				>
-					<div className='space-y-6'>
-						<div className='flex items-center space-x-4'>
-							<div className='w-6 h-3 bg-primary rounded-2xl'></div>
-							<label className='text-gray-700 ms-8 text-[24px] font-medium'>
-								Name
-							</label>
-						</div>
-						<input
-							type='text'
-							className='md:w-[480px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary'
-						/>
+  return (
+    <>
+      <ListsHeroSection title={"Add Lists"} isbtn={false} />
+      <div className="container border mx-auto my-8 bg-[#FCFCFC] rounded-custom text-gray-700 ">
+        <h2 className="bg-primary p-3 text-white font-bold text-[35px] rounded-t-[20px]">
+          Add List
+        </h2>
+        <form className="p-4 mb-12 px-8" onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-y-6">
+            <div className="flex items-center space-x-4">
+              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+              <label className="text-gray-700 ms-8 text-[24px] font-medium">
+                Name
+              </label>
+            </div>
+            <input
+              type="text"
+              {...register("name")}
+              className="md:w-[480px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            {errors.name && (
+              <p className="text-red-500 ms-8">{errors.name.message}</p>
+            )}
 
-						{/* Location Input */}
-						<div className='space-y-6'>
-							<div className='flex items-center space-x-8'>
-								<div className='w-6 h-3 bg-primary rounded-2xl'></div>
-								<label className='text-gray-700 text-[24px] ms-8 font-medium'>
-									Location
-								</label>
-							</div>
-							<input
-								type='text'
-								placeholder='Enter your address'
-								className='md:w-[480px] h-[64px] w-full ms-8 ps-4 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary'
-							/>
-						</div>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-8">
+                <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+                <label className="text-gray-700 text-[24px] ms-8 font-medium">
+                  Location
+                </label>
+              </div>
+              <input
+                type="text"
+                {...register("location")}
+                className="md:w-[480px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              {errors.location && (
+                <p className="text-red-500 ms-8">{errors.location.message}</p>
+              )}
+            </div>
 
 						{/* Price Input */}
 						<div className='space-y-6'>
@@ -131,40 +131,59 @@ export default function AddListForm() {
 										className='w-[100px] h-[64px] border border-gray-300 rounded-custom px-3 text-center focus:outline-none focus:ring-2 focus:ring-primary'
 									/>
 
-									<input
-										type='tel'
-										className='w-[290px] h-[64px] border border-gray-300 rounded-custom px-3 focus:outline-none focus:ring-2 focus:ring-primary'
-									/>
-								</div>
-							</div>
+                  <input
+                    type="text"
+                    {...register("phone")}
+                    className="md:w-[290px] h-[64px] w-full ms-8 p-2 border border-gray-300 rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  {errors.phone && (
+                    <p className="text-red-500 ms-8">{errors.phone.message}</p>
+                  )}
+                </div>
+              </div>
 
-							{/* Date Picker */}
-							<div className='mb-3'>
-								<div className='flex items-center space-x-8'>
-									<div className='w-6 h-3 bg-primary rounded-2xl'></div>
-									<label className='text-gray-700 text-[24px]'>Date</label>
-								</div>
-								<DatePicker />
-							</div>
-						</div>
+              {/* Date Picker */}
+              <div className="mb-3">
+                <div className="flex items-center space-x-8">
+                  <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+                  <label className="text-gray-700 text-[24px]">Date</label>
+                </div>
+                <Controller
+                  control={control}
+                  name="date"
+                  render={({ field }) => (
+                    <DatePicker value={field.value} onChange={field.onChange} />
+                  )}
+                />
+                {errors.date && (
+                  <p className="text-red-500 ms-8">{errors.date.message}</p>
+                )}
+              </div>
+            </div>
 
-						{/* Description */}
-						<div className='mb-4'>
-							<div className='flex mb-3 items-center space-x-8'>
-								<div className='w-6 h-3 bg-primary rounded-2xl'></div>
-								<label className='text-gray-700  text-[24px]'>
-									Description
-								</label>
-							</div>
-							<div className='ms-8'>
-								<textarea
-									value={description}
-									onChange={(e) => setDescription(e.target.value)}
-									className='w-full h-[286px] p-2 border resize-none overflow-hidden rounded-custom focus:outline-none focus:ring-2 focus:ring-primary'
-									// rows="4"
-								></textarea>
-							</div>
-						</div>
+            {/* Description */}
+            <div className="mb-4">
+              <div className="flex mb-3 items-center space-x-8">
+                <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+                <label className="text-gray-700  text-[24px]">
+                  Description
+                </label>
+              </div>
+              <div className="ms-8">
+                <textarea
+                  value={description}
+                  {...register("description")}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="w-full h-[286px] p-2 border resize-none overflow-hidden rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
+                  // rows="4"
+                ></textarea>
+                {errors.description && (
+                  <p className="text-red-500 ms-8">
+                    {errors.description.message}
+                  </p>
+                )}
+              </div>
+            </div>
 
 						{/* Location */}
 						<div className='mb-7'>
@@ -187,104 +206,104 @@ export default function AddListForm() {
 						</div>
 						<AmenitiesCheckbox />
 
-						{errors.amenities && (
-							<p className='text-red-500 text-sm mt-2'>
-								{errors.amenities.message}
-							</p>
-						)}
-					</div>
-					<div className='mb-8'>
-						<div className='flex mb-3 items-center space-x-8'>
-							<div className='w-6 h-3 bg-primary rounded-2xl'></div>
-							<label className='text-gray-700  text-[24px]'>Opening Time</label>
-						</div>
-						<div className='flex space-x-6'>
-							<div className='relative'>
-								<select className='w-[161px] rounded-custom h-[64px] border border-gray-300  px-4 pr-10 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary'>
-									<option value=''></option>
-									{[...Array(24).keys()].map((h) => {
-										return (
-											<option
-												key={h}
-												value={h}
-											>
-												{h.toString().padStart(2, "0")}
-											</option>
-										);
-									})}
-								</select>
-								<img
-									src='/imgs/Polygon 10.svg'
-									alt='Arrow'
-									className='absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-6 pointer-events-none'
-								/>
-							</div>
-							<div className='relative'>
-								<select className='w-[161px] rounded-custom h-[64px] border border-gray-300 px-4 pr-10 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary'>
-									<option value=''></option>
-									{[...Array(24).keys()].map((h) => {
-										return (
-											<option
-												key={h}
-												value={h}
-											>
-												{h.toString().padStart(2, "0")}
-											</option>
-										);
-									})}
-								</select>
-								<img
-									src='/imgs/Polygon 10.svg'
-									alt='Arrow'
-									className='absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-6 pointer-events-none'
-								/>
-							</div>
-						</div>
-					</div>
-					<div className='my-10'>
-						<div className='flex mb-3 items-center space-x-8'>
-							<div className='w-6 h-3 bg-primary rounded-2xl'></div>
-							<label className='text-gray-700  text-[24px]'>Categories</label>
-						</div>
-						<div className='relative w-full md:w-[430px]'>
-							<select className='w-full h-[64px] border border-gray-300 rounded-custom px-4 pr-12 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary'>
-								<option value=''></option>
-								<option value='restaurant'>Restaurant</option>
-								<option value='cafe'>Cafe</option>
-							</select>
-							<img
-								src='/imgs/Polygon 10.svg'
-								alt='Arrow'
-								className='absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none'
-							/>
-						</div>
-					</div>
-					<div className='mb-4'>
-						<div className='flex mb-3 items-center space-x-8'>
-							<div className='w-6 h-3 bg-primary rounded-2xl'></div>
-							<label className='text-gray-700 text-[24px]'>Provide Link</label>
-						</div>
-						<input
-							type='text'
-							className='w-full h-[64px] p-2 border rounded-custom focus:outline-none focus:ring-2 focus:ring-primary'
-							{...register("providerLink")}
-						/>
-						{errors.providerLink && (
-							<p className='text-red-500 text-sm mt-2'>
-								{errors.providerLink.message}
-							</p>
-						)}
-					</div>
-					<div className='flex justify-start'>
-						<button
-							type='submit'
-							className='bg-primary mt-3 text-[24px] rounded-custom text-white py-2 px-6'
-						>
-							Save
-						</button>
-					</div>
-				</form>
-			</div>
-		</>
-	);
+            {errors.amenities && (
+              <p className="text-red-500 text-sm mt-2">
+                {errors.amenities.message}
+              </p>
+            )}
+          </div>
+          <div className="mb-8">
+            <div className="flex mb-3 items-center space-x-8">
+              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+              <label className="text-gray-700  text-[24px]">Opening Time</label>
+            </div>
+            <div className="flex space-x-6">
+              <div className="relative">
+                <select className="w-[161px] rounded-custom h-[64px] border border-gray-300  px-4 pr-10 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value=""></option>
+                  {[...Array(24).keys()].map((h) => {
+                    return (
+                      <option key={h} value={h}>
+                        {h.toString().padStart(2, "0")}
+                      </option>
+                    );
+                  })}
+                </select>
+                <img
+                  src="/imgs/Polygon 10.svg"
+                  alt="Arrow"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-6 pointer-events-none"
+                />
+              </div>
+              <div className="relative">
+                <select className="w-[161px] rounded-custom h-[64px] border border-gray-300 px-4 pr-10 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value=""></option>
+                  {[...Array(24).keys()].map((h) => {
+                    return (
+                      <option key={h} value={h}>
+                        {h.toString().padStart(2, "0")}
+                      </option>
+                    );
+                  })}
+                </select>
+                <img
+                  src="/imgs/Polygon 10.svg"
+                  alt="Arrow"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-6 pointer-events-none"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="my-10">
+            <div className="flex mb-3 items-center space-x-8">
+              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+              <label className="text-gray-700  text-[24px]">Categories</label>
+            </div>
+            <div className="relative w-full md:w-[430px]">
+              <select
+                {...register("category")}
+                className="w-full h-[64px] border border-gray-300 rounded-custom px-4 pr-12 appearance-none bg-white text-center focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option value=""></option>
+                <option value="restaurant">Restaurant</option>
+                <option value="cafe">Cafe</option>
+              </select>
+              {errors.category && (
+                <p className="text-red-500 ms-8">{errors.category.message}</p>
+              )}
+              <img
+                src="/imgs/Polygon 10.svg"
+                alt="Arrow"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none"
+              />
+            </div>
+          </div>
+          <div className="mb-4">
+            <div className="flex mb-3 items-center space-x-8">
+              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
+              <label className="text-gray-700 text-[24px]">Provide Link</label>
+            </div>
+            <input
+              type="text"
+              className="w-full h-[64px] p-2 border rounded-custom focus:outline-none focus:ring-2 focus:ring-primary"
+              {...register("providerLink")}
+            />
+            {errors.providerLink && (
+              <p className="text-red-500 text-sm mt-2">
+                {errors.providerLink.message}
+              </p>
+            )}
+          </div>
+          <div className="flex justify-start">
+            <button
+              type="submit"
+              className="bg-primary mt-3 text-[24px] rounded-custom text-white py-2 px-6"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
 }

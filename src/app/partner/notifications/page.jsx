@@ -22,28 +22,28 @@ const notifications = [
 ];
 
 export default function Notifications() {
-	return (
-		<>
-			<div className='w-full overflow-hidden bg-primary text-white p-4 text-lg font-semibold'>
-				<h1 className='container text-[24px]'>Notification</h1>
-			</div>
-			<div className='container my-8'>
-				<div className='bg-white rounded-md'>
-					{notifications.map((notification, index) => (
-						<div key={notification.id}>
-							<div
-								key={notification.id} // border-b last:border-none
-								className='flex items-center p-4'
-							>
-								<div className='w-16 h-16 relative'>
-									<Image
-										src={notification.image}
-										alt='Profile'
-										width={120}
-										height={120}
-										className='rounded-full'
-									/>
-								</div>
+  return (
+    <>
+      <div className="w-full overflow-hidden bg-primary text-white p-4 text-lg font-semibold">
+        <h1 className="container mx-auto text-[24px]">Notification</h1>
+      </div>
+      <div className=" my-8">
+        <div className="bg-white rounded-md">
+          {notifications.map((notification, index) => (
+            <div key={index}>
+              <div
+                key={notification.id}
+                className="flex items-center container mx-auto py-4"
+              >
+                <div className="w-16 h-16 relative">
+                  <Image
+                    src={notification.image}
+                    alt="Profile"
+                    width={120}
+                    height={120}
+                    className="rounded-full"
+                  />
+                </div>
 
 								<div className='ml-4'>
 									<p className='text-lg font-semibold'>{notification.title}</p>
