@@ -2,44 +2,45 @@ import Image from "next/image";
 import Link from "next/link";
 
 function PartnerIntro() {
-  const sections = [
-    {
-      title: "Resturant",
-      img: "/imgs/partner.png",
-    },
-    {
-      title: "Services",
-      img: "/imgs/partner.png",
-    },
-    {
-      title: "Hotels",
-      img: "/imgs/partner.png",
-    },
-    {
-      title: "Offers",
-      img: "/imgs/partner.png",
-    },
-    {
-      title: "Packages",
-      img: "/imgs/partner.png",
-    },
-  ];
-  return (
-    <div className="relative w-full py-12">
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/imgs/intro bg.png"
-          alt="Background"
-          fill
-          style={{ objectFit: "cover" }}
-          priority
-        />
-      </div>
+	const sections = [
+		{
+			title: "Resturant",
+			img: "/imgs/partner.png",
+		},
+		{
+			title: "Services",
+			img: "/imgs/partner.png",
+		},
+		{
+			title: "Hotels",
+			img: "/imgs/partner.png",
+		},
+		{
+			title: "Offers",
+			img: "/imgs/partner.png",
+		},
+		{
+			title: "Packages",
+			img: "/imgs/partner.png",
+		},
+	];
+	return (
+		<div className='relative w-full h-screen'>
+			<div className='absolute inset-0 -z-10'>
+				<Image
+					src='/imgs/couple-sitting-coverlet-sea-shore.png'
+					alt='Background'
+					fill
+					style={{ objectFit: "cover", objectPosition: "bottom" }}
+					priority
+				/>
+				<div className='absolute inset-0 bg-black bg-opacity-40'></div>
+			</div>
 
-      <div className="relative flex flex-col items-center justify-center h-full text-center text-white">
-        <h1 className="text-[32px] md:text-[40px] font-semibold mb-8">
-          Sign up to Lobby lane
-        </h1>
+			<div className='relative flex flex-col items-center justify-center h-full text-center text-white'>
+				<h1 className='text-[32px] md:text-[40px] font-semibold mb-8'>
+					Sign up to Lobby lane
+				</h1>
 
         <div className="flex gap-6 flex-wrap justify-center px-4">
           {sections.map((item, i) => (

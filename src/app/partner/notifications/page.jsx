@@ -1,24 +1,24 @@
 import Image from "next/image";
 
 const notifications = [
-  {
-    id: 1,
-    title: "Title",
-    time: "Posted from 1 hour",
-    image: "/imgs/mini logo.png",
-  },
-  {
-    id: 2,
-    title: "Title",
-    time: "Posted from 1 hour",
-    image: "/imgs/mini logo.png",
-  },
-  {
-    id: 3,
-    title: "Title",
-    time: "Posted from 1 hour",
-    image: "/imgs/mini logo.png",
-  },
+	{
+		id: 1,
+		title: "Title",
+		time: "Posted from 1 hour",
+		image: "/imgs/mini logo.png",
+	},
+	{
+		id: 2,
+		title: "Title",
+		time: "Posted from 1 hour",
+		image: "/imgs/mini logo.png",
+	},
+	{
+		id: 3,
+		title: "Title",
+		time: "Posted from 1 hour",
+		image: "/imgs/mini logo.png",
+	},
 ];
 
 export default function Notifications() {
@@ -45,22 +45,22 @@ export default function Notifications() {
                   />
                 </div>
 
-                <div className="ml-4">
-                  <p className="text-lg font-semibold">{notification.title}</p>
-                  <p className="text-gray-500 text-sm">{notification.time}</p>
-                </div>
-              </div>
-              <hr
-                className={`border-t border-gray-300 ${
-                  index !== notifications.length - 1
-                    ? "absolute left-0 w-full"
-                    : "hidden"
-                }`}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
+								<div className='ml-4'>
+									<p className='text-lg font-semibold'>{notification.title}</p>
+									<p className='text-gray-500 text-sm'>{notification.time}</p>
+								</div>
+							</div>
+							<hr
+								className={`border-t border-gray-300 ${
+									index !== notifications.length - 1
+										? "absolute left-0 w-full"
+										: "hidden"
+								}`}
+							/>
+						</div>
+					))}
+				</div>
+			</div>
+		</>
+	);
 }

@@ -11,44 +11,44 @@ import DatePicker from "@/components/DatePicker";
 import AmenitiesCheckbox from "@/components/AmenitiesCheckbox";
 
 const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  location: z.string().min(1, "Location is required"),
-  price: z.number().min(0, "Price must be positive"),
-  phone: z.string().min(1, "Phone is required"),
-  date: z.string().min(1, "Date is required"),
-  description: z.string().min(1, "Description is required"),
-  images: z.array(z.any()).optional(),
-  amenities: z.array(z.string()).optional(),
-  category: z.string().min(1, "Category is required"),
-  providerLink: z.string().url("Invalid URL"),
-  amenities: z.array(z.string()).min(1, "Please select at least one amenity"),
+	name: z.string().min(1, "Name is required"),
+	location: z.string().min(1, "Location is required"),
+	price: z.number().min(0, "Price must be positive"),
+	phone: z.string().min(1, "Phone is required"),
+	date: z.string().min(1, "Date is required"),
+	description: z.string().min(1, "Description is required"),
+	images: z.array(z.any()).optional(),
+	amenities: z.array(z.string()).optional(),
+	category: z.string().min(1, "Category is required"),
+	providerLink: z.string().url("Invalid URL"),
+	amenities: z.array(z.string()).min(1, "Please select at least one amenity"),
 });
 const amenitiesList = [
-  "Pool",
-  "Balcony",
-  "Parking",
-  "Washing machine",
-  "Internet",
-  "Air conditioning",
-  "Pet friendly",
-  "Garden",
+	"Pool",
+	"Balcony",
+	"Parking",
+	"Washing machine",
+	"Internet",
+	"Air conditioning",
+	"Pet friendly",
+	"Garden",
 ];
 export default function AddListForm() {
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm({ resolver: zodResolver(schema) });
-  const [images, setImages] = useState([]);
+	const {
+		register,
+		handleSubmit,
+		control,
+		watch,
+		setValue,
+		formState: { errors },
+	} = useForm({ resolver: zodResolver(schema) });
+	const [images, setImages] = useState([]);
 
-  const onSubmit = (data) => {
-    console.log({ ...data, images });
-  };
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
+	const onSubmit = (data) => {
+		console.log({ ...data, images });
+	};
+	const [description, setDescription] = useState("");
+	const [location, setLocation] = useState("");
 
   return (
     <>
@@ -91,45 +91,45 @@ export default function AddListForm() {
               )}
             </div>
 
-            {/* Price Input */}
-            <div className="space-y-6">
-              <div className="flex items-center space-x-8">
-                <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-                <label className="text-gray-700 text-[24px]">Price range</label>
-              </div>
-              <RangeInput
-                max={200000}
-                label={""}
-                className={"w-full md:w-1/3 ms-6"}
-              />
-            </div>
+						{/* Price Input */}
+						<div className='space-y-6'>
+							<div className='flex items-center space-x-8'>
+								<div className='w-6 h-3 bg-primary rounded-2xl'></div>
+								<label className='text-gray-700 text-[24px]'>Price range</label>
+							</div>
+							<RangeInput
+								max={200000}
+								label={""}
+								className={"w-full md:w-1/3 ms-6"}
+							/>
+						</div>
 
-            <div className="flex mt-[9rem] items-center space-x-8">
-              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700 text-[24px]">Photos</label>
-            </div>
-            <div className="ms-8">
-              <div className="bg-primary mb-6 p-3 flex justify-center items-center text-white rounded-xl w-[152px] h-[64px]">
-                <h3 className="text-[24px]">Upload</h3>
-              </div>
-              <ImageUploader />
-            </div>
-          </div>
-          <div className="">
-            <div className="flex items-center justify-between flex-wrap gap-8 my-8">
-              {/* Phone Number */}
-              <div className="">
-                <div className="flex mb-3 items-center space-x-8">
-                  <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-                  <label className="text-gray-700 text-[24px]">
-                    Phone Number
-                  </label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="text"
-                    className="w-[100px] h-[64px] border border-gray-300 rounded-custom px-3 text-center focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
+						<div className='flex mt-[9rem] items-center space-x-8'>
+							<div className='w-6 h-3 bg-primary rounded-2xl'></div>
+							<label className='text-gray-700 text-[24px]'>Photos</label>
+						</div>
+						<div className='ms-8'>
+							<div className='bg-primary mb-6 p-3 flex justify-center items-center text-white rounded-xl w-[152px] h-[64px]'>
+								<h3 className='text-[24px]'>Upload</h3>
+							</div>
+							<ImageUploader />
+						</div>
+					</div>
+					<div className=''>
+						<div className='flex items-center justify-between flex-wrap gap-8 my-8'>
+							{/* Phone Number */}
+							<div className=''>
+								<div className='flex mb-3 items-center space-x-8'>
+									<div className='w-6 h-3 bg-primary rounded-2xl'></div>
+									<label className='text-gray-700 text-[24px]'>
+										Phone Number
+									</label>
+								</div>
+								<div className='flex items-center gap-2'>
+									<input
+										type='text'
+										className='w-[100px] h-[64px] border border-gray-300 rounded-custom px-3 text-center focus:outline-none focus:ring-2 focus:ring-primary'
+									/>
 
                   <input
                     type="text"
@@ -185,26 +185,26 @@ export default function AddListForm() {
               </div>
             </div>
 
-            {/* Location */}
-            <div className="mb-7">
-              <div className="flex mb-3 items-center space-x-8">
-                <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-                <label className="text-gray-700  text-[24px]">Near by</label>
-              </div>
-              <input
-                type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                className="w-full h-[64px] rounded-custom p-2 border focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              />
-            </div>
-          </div>
-          <div className="mb-8">
-            <div className="flex mb-3 items-center space-x-8">
-              <div className="w-6 h-3 bg-primary rounded-2xl"></div>
-              <label className="text-gray-700  text-[24px]">Animates</label>
-            </div>
-            <AmenitiesCheckbox />
+						{/* Location */}
+						<div className='mb-7'>
+							<div className='flex mb-3 items-center space-x-8'>
+								<div className='w-6 h-3 bg-primary rounded-2xl'></div>
+								<label className='text-gray-700  text-[24px]'>Near by</label>
+							</div>
+							<input
+								type='text'
+								value={location}
+								onChange={(e) => setLocation(e.target.value)}
+								className='w-full h-[64px] rounded-custom p-2 border focus:outline-none focus:ring-2 focus:ring-yellow-500'
+							/>
+						</div>
+					</div>
+					<div className='mb-8'>
+						<div className='flex mb-3 items-center space-x-8'>
+							<div className='w-6 h-3 bg-primary rounded-2xl'></div>
+							<label className='text-gray-700  text-[24px]'>Animates</label>
+						</div>
+						<AmenitiesCheckbox />
 
             {errors.amenities && (
               <p className="text-red-500 text-sm mt-2">

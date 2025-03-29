@@ -7,7 +7,7 @@ import PersonalProfile from "./PersonalProfile";
 
 function Header() {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
-	const [isLogedIn, setisLogedIn] = useState(true);
+	const [isLogedIn, setisLogedIn] = useState(false);
 
 	const openPopup = () => setIsPopupOpen(true);
 	const closePopup = () => setIsPopupOpen(false);
@@ -92,8 +92,8 @@ function Header() {
 						<PersonalProfile />
 					) : (
 						<>
-							<a href='#'>Sign up </a>
-							<a href='#'>Login</a>
+							<Link href='/auth/'>Sign up </Link>
+							<Link href='/auth/'>Login</Link>
 						</>
 					)}
 				</div>
