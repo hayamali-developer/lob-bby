@@ -1,13 +1,18 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ["127.0.0.1", "localhost","your-laravel-api.com"], // Add your Laravel API domain here
-    },
-  };
-  export default nextConfig;
-  //module.exports = nextConfig;
-
-
+	images: {
+		domains: ["127.0.0.1", "localhost", "your-laravel-api.com"], // Add your Laravel API domain here
+	},
+	experimental: {
+		serverActions: true,
+	},
+};
+export default withNextIntl(nextConfig);
+//module.exports = nextConfig;
 
 // /** @type {import('next').NextConfig} */
 // const nextConfig = {};

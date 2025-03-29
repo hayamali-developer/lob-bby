@@ -1,0 +1,14 @@
+{
+    "navbar": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact",
+        "signUp": "Sign Up",
+        "login": "Login",
+        "logout": "Logout"
+    },
+    "footer": {
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service"
+    }
+}
