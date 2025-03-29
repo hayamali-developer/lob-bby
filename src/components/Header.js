@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import PhoneNavbar from "./PhoneNavbar";
 import Image from "next/image";
 import PersonalProfile from "./PersonalProfile";
+import { useTranslations } from "next-intl";
+import LocaleSwitcher from "@/utils/LocaleSwitcher";
 
 function Header() {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [isLogedIn, setisLogedIn] = useState(false);
-
+	const t = useTranslations("navbar");
 	const openPopup = () => setIsPopupOpen(true);
 	const closePopup = () => setIsPopupOpen(false);
 
@@ -77,23 +79,14 @@ function Header() {
 							</div>
 						</div>
 
-						<div className='language-box'>
-							<Image
-								width={40}
-								height={40}
-								src='/imgs/united-kingdom 1.svg'
-								alt='language'
-								className='en'
-							/>
-							<button>English</button>
-						</div>
+						<LocaleSwitcher />
 					</div>
 					{isLogedIn ? (
 						<PersonalProfile />
 					) : (
 						<>
-							<Link href='/auth/'>Sign up </Link>
-							<Link href='/auth/'>Login</Link>
+							<Link href='/auth/'>{t("signUp")} </Link>
+							<Link href='/auth/'>{t("login")}</Link>
 						</>
 					)}
 				</div>

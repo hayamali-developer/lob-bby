@@ -1,0 +1,14 @@
+{
+    "navbar": {
+        "home": "الرئيسية",
+        "about": "حول",
+        "contact": "اتصل",
+        "signUp": "إنشاء حساب",
+        "login": "تسجيل الدخول",
+        "logout": "تسجيل الخروج"
+    },
+    "footer": {
+        "privacy_policy": "سياسة الخصوصية",
+        "terms_of_service": "شروط الخدمة"
+    }
+}
